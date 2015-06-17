@@ -6,7 +6,8 @@
       stack: [Imuta.clone(init_val)],
       purge: function() {
         this.iterator = 0;
-        return this.stack = this.stack.slice(0, 1);
+        this.stack = this.stack.slice(0, 1);
+        return this.stack[this.iterator];
       },
       push: function(value) {
         if (!(Imuta.equal(this.stack[this.iterator], value))) {

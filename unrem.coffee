@@ -4,6 +4,7 @@ window.Unrem = (init_val) -> {
 		purge: () -> 
 			@iterator = 0
 			@stack = @stack.slice(0,1)
+			@stack[@iterator]
 		push: (value) ->
 			if not(Imuta.equal(@stack[@iterator], value))
 				if (@iterator+1) != @stack.length then @stack = @stack.slice(0,@iterator+1)
