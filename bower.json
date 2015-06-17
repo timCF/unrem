@@ -1,0 +1,27 @@
+{
+  "name": "unrem",
+  "version": "0.0.0",
+  "homepage": "https://github.com/timCF/unrem",
+  "description": "UNdo - REdo simple Manager based on stack for js",
+  "main": "unrem.js",
+  "keywords": [
+    "js",
+    "undo",
+    "redo",
+    "stack"
+  ],
+  "authors": [
+    "timCF"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "imuta": "*"
+  }
+}
