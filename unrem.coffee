@@ -20,6 +20,6 @@ window.Unrem = (init_val) -> {
 		if (@stack_second.length != 0) then @stack_main.push(@stack_second.pop())
 		@get()
 	get: () -> 
-		@stack_main[@stack_main.length-1]
+		Imuta.clone(@stack_main[@stack_main.length-1])
 }
 #module.exports = Unrem

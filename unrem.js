@@ -33,7 +33,7 @@
         return this.get();
       },
       get: function() {
-        return this.stack_main[this.stack_main.length - 1];
+        return Imuta.clone(this.stack_main[this.stack_main.length - 1]);
       }
     };
   };
