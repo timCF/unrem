@@ -2,37 +2,38 @@
 (function() {
   window.Unrem = function(init_val) {
     return {
-      iterator: 0,
-      stack: [Imuta.clone(init_val)],
+      stack_main: [Imuta.clone(init_val)],
+      stack_second: [],
       purge: function() {
-        this.iterator = 0;
-        this.stack = this.stack.slice(0, 1);
-        return this.stack[this.iterator];
+        this.stack_second = [];
+        this.stack_main = [this.stack_main[0]];
+        return this.get();
       },
       push: function(value) {
-        if (!(Imuta.equal(this.stack[this.iterator], value))) {
-          if ((this.iterator + 1) !== this.stack.length) {
-            this.stack = this.stack.slice(0, this.iterator + 1);
+        if (!(Imuta.equal(this.get(), value))) {
+          if (Imuta.equal(this.stack_second[this.stack_second.length - 1], value) && (this.stack_second.length !== 0)) {
+            this.redo();
+          } else {
+            this.stack_second = [];
+            this.stack_main.push(Imuta.clone(value));
           }
-          this.iterator++;
-          this.stack.push(Imuta.clone(value));
         }
         return value;
       },
       undo: function() {
-        if (this.iterator !== 0) {
-          this.iterator--;
+        if (this.stack_main.length !== 1) {
+          this.stack_second.push(this.stack_main.pop());
         }
-        return this.stack[this.iterator];
+        return this.get();
       },
       redo: function() {
-        if ((this.iterator + 1) !== this.stack.length) {
-          this.iterator++;
+        if (this.stack_second.length !== 0) {
+          this.stack_main.push(this.stack_second.pop());
         }
-        return this.stack[this.iterator];
+        return this.get();
       },
       get: function() {
-        return this.stack[this.iterator];
+        return this.stack_main[this.stack_main.length - 1];
       }
     };
   };

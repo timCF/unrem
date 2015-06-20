@@ -2,7 +2,7 @@
 Unrem
 =====
 
-Very simple undo-redo manager based on stack.
+Very simple undo-redo manager based on stacks.
 
 Install
 -------
@@ -18,7 +18,7 @@ Usage
 state = new Unrem(1)
 state.get() 	# 1
 state.push(2) 	# 2
-state.get		# 2
+state.get()		# 2
 state.push(3)	# 3
 state.undo()	# 2
 state.undo()	# 1
